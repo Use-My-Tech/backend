@@ -29,7 +29,7 @@ authRouter.post("/login", (req, res) => {
             expiresIn: "1d"
         }
         const token = jwt.sign(payload, process.env.JWT_SECRET, options)
-        res.status(200).json({token})
+        res.status(200).json({token, user})
       } else {
           res.status(401).end()
       }   
