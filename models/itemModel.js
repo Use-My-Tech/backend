@@ -13,7 +13,7 @@ function findAll() {
 }
 
 function findById(id) {
-    return db("Items").where({id})
+    return db("Items").where({id}).first()
 }
 
 function add(item) {
