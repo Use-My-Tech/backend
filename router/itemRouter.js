@@ -1,7 +1,8 @@
 const itemRouter = require("express").Router()
 const MD = require("../models/itemModel")
+const midW = require("../middleware")
 
-itemRouter.get("/", (req, res) => {
+itemRouter.get("/", midW.authenticate, (req, res) => {
     MD.findAll()
     .then(response => {
         res.json(response)
