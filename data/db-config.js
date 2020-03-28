@@ -1,4 +1,4 @@
-const knex = require("express")
+const knex = require("knex")
 
 const configs = require("../knexfile")
 
