@@ -4,6 +4,7 @@ module.exports = {
     findBy,
     findItemsById,
     add,
+    addItemByUserId,
     remove
 }
 
@@ -17,6 +18,10 @@ function findItemsById(id) {
 
 function add(user) {
     return db("Users").insert(user)
+}
+
+function addItemByUserId(itemWithUserId) {
+    return db("Items").insert(itemWithUserId)
 }
 
 function remove(id) {

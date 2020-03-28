@@ -23,17 +23,6 @@ itemRouter.get("/:id", midW.authenticate, (req, res) => {
     })
 })
 
-itemRouter.post("/", midW.authenticate, (req, res) => {
-    const item = req.body
-    MD.add(item)
-    .then(response => {
-        res.status(201).json(response)
-    })
-    .catch(() => {
-        res.status(500).json({error: "there must be a problem with the server"})
-    })
-})
-
 itemRouter.delete("/:id", midW.authenticate, (req, res) => {
     const {id} = req.params
     MD.remove(id)

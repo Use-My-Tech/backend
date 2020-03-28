@@ -15,8 +15,10 @@ userRouter.get("/:id/items", midW.authenticate, (req, res) => {
 })
 
 userRouter.post("/:id/items", midW.authenticate, (req, res) => {
+    const {id} = req.params
     const item = req.body
-    MD.add(item)
+    item.user_id = Number(id)
+    MD.addItemByUserId(item)
     .then(response => {
         res.status(201).json(response)
     })
