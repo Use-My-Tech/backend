@@ -45,4 +45,16 @@ itemRouter.delete("/:id", midW.authenticate, (req, res) => {
     })
 })
 
+itemRouter.put("/:id", midW.authenticate, (req, res) => {
+    const {id} = req.params
+    const change = req.body
+    MD.update(id, change)
+    .then(response => {
+        res.status(200).json(response)
+    })
+    .catch(() => {
+        res.status(500).json({error: "there must be a problem with the server"})
+    })
+})
+
 module.exports = itemRouter
