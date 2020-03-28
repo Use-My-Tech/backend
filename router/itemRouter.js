@@ -12,4 +12,15 @@ itemRouter.get("/", midW.authenticate, (req, res) => {
     })
 })
 
+itemRouter.get("/:id", midW.authenticate, (req, res) => {
+    const {id} = req.params
+    MD.findById(id)
+    .then(response => {
+        res.json(response)
+    })
+    .catch(() => {
+        res.status(500).json({error: "there must be a problem with the server"})
+    })
+})
+
 module.exports = itemRouter
